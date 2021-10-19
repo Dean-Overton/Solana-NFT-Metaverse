@@ -8,7 +8,6 @@ public class PlayerMovementController : MonoBehaviour
     //Player Movement Variables
 	[Range(0, 20)] [SerializeField] private float playerSpeed = 3f;
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;
-	[Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;
 
 	//[SerializeField] private Joystick movementJoystick;
 
@@ -42,17 +41,9 @@ public class PlayerMovementController : MonoBehaviour
 
 		//Use the two store floats to make movement vector
 		Vector2 movementVector = new Vector2(moveHorizontal, moveVertical);
-		//If crouching key pressed
-		if (Input.GetAxis("Crouch") != 0) {
-			//Couch move
-			Move(movementVector, true);
-		} else
-		{
-			//Dont crouch move
-			Move(movementVector, false);
-		}
+		MoveWithInputVector(movementVector);
     }
-	public void Move(Vector2 move, bool crouch)
+	public void MoveWithInputVector(Vector2 move)
 	{
 		if (!collidingTerrain)
 		{
@@ -60,15 +51,6 @@ public class PlayerMovementController : MonoBehaviour
 		} else
 		{
 			playerAnim.SetFloat("speedMovement", 0f);
-		}
-		// If crouching
-		if (crouch)
-		{
-			//## Make player quiet ##
-
-
-			// Reduce the speed by the crouchSpeed multiplier for both directions
-			move *= new Vector2(m_CrouchSpeed, m_CrouchSpeed);
 		}
 
 		//If moving on x
