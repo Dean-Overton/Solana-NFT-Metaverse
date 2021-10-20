@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovementController : MonoBehaviour
 {
+	[Header("Movement Controls")]
     //Player Movement Variables
 	[Range(0, 20)] [SerializeField] private float playerSpeed = 3f;
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;
@@ -19,80 +20,74 @@ public class PlayerMovementController : MonoBehaviour
 
 	void Awake()
     {
-		//Get and store a reference to the Rigidbody2D component so that we can access it.
+		//Need intances of player components on game start.
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
-
 		playerAnim = GetComponent<Animator>();
     }
-	private float moveHorizontal;
-	private float moveVertical;
 	void FixedUpdate()
     {
+		MoveWithInput(InputVectorMovement());
+    }
+	private Vector2 InputVectorMovement () {
+		float moveHorizontal = 0;
+		float moveVertical = 0;
 #if UNITY_ANDROID
 		//moveHorizontal = movementJoystick.Horizontal;
 		//moveVertical = movementJoystick.Vertical;
 #elif UNITY_EDITOR
-		//Store the current horizontal input in the float moveHorizontal.
 		moveHorizontal = Input.GetAxis("Horizontal");
-
-        //Store the current vertical input in the float moveVertical.
         moveVertical = Input.GetAxis("Vertical");
 #endif
-
 		//Use the two store floats to make movement vector
-		Vector2 movementVector = new Vector2(moveHorizontal, moveVertical);
-		MoveWithInputVector(movementVector);
-    }
-	public void MoveWithInputVector(Vector2 move)
+		return new Vector2(moveHorizontal, moveVertical);
+	}
+	private void MoveWithInput(Vector2 movement)
 	{
-		if (!collidingTerrain)
-		{
-			playerAnim.SetFloat("speedMovement", move.magnitude);
-		} else
-		{
+		if (!collidingTerrain) //Animate only if not hitting terrain
+			playerAnim.SetFloat("speedMovement", movement.magnitude);
+		else
 			playerAnim.SetFloat("speedMovement", 0f);
+
+		if(Mathf.Abs(movement.magnitude) > 0) {
+			Vector3 targetVelocity = new Vector2(movement.x * playerSpeed, m_Rigidbody2D.velocity.y);
+
+			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+		} else {
+			m_Rigidbody2D.velocity = Vector3.zero;
 		}
 
-		//If moving on x
-		if (move.x != 0)
+		if (movement.x != 0)
 		{
 			// Move the character by finding the target velocity
-			Vector3 targetVelocity = new Vector2(move.x * playerSpeed, m_Rigidbody2D.velocity.y);
+			Vector3 targetVelocity = new Vector2(movement.x * playerSpeed, m_Rigidbody2D.velocity.y);
 			// And then smoothing it out and applying it to the character
-			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 		}
 		//If moving on y
-		if (move.y != 0)
+		if (movement.y != 0)
 		{
-			// Move the character by finding the target velocity
-			Vector3 targetVelocity = new Vector2(m_Rigidbody2D.velocity.x, move.y * playerSpeed);
+			// movement the character by finding the target velocity
+			Vector3 targetVelocity = new Vector2(m_Rigidbody2D.velocity.x, movement.y * playerSpeed);
 			// And then smoothing it out and applying it to the character
 			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 		}
 
-		// If the input is moving the player right and the player is facing left...
-		if (move.x > 0 && !m_FacingRight)
+		//Ensures players movement matches with direction players facing.
+		if (movement.x > 0 && !m_FacingRight)
 			{
-				// ... flip the player.
 				Flip();
 			}
-			// Otherwise if the input is moving the player left and the player is facing right...
-			else if (move.x < 0 && m_FacingRight)
+			else if (movement.x < 0 && m_FacingRight)
 			{
-				// ... flip the player.
 				Flip();
 			}
 		}
 	// If the player should jump...
 	private void Flip()
 	{
-		// Switch the way the player is labelled as facing.
 		m_FacingRight = !m_FacingRight;
 
-		// Multiply the player's x local scale by -1.
-		GetComponentInChildren<SpriteRenderer>().flipX = !GetComponentInChildren<SpriteRenderer>().flipX;
+		transform.localScale = new Vector3(transform.localScale.x * -1f, transform.localScale.y, transform.localScale.z);
 	}
-
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
 		if(collision.gameObject.tag =="Terrain")
