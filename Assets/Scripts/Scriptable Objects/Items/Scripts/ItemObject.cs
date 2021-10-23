@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class ItemObject : ScriptableObject
 {
-    public GameObject itemPrefab;
+    public GameObject itemDropPrefab;
     public ItemType type;
     public bool stackable;
     [TextArea(15, 20)]
