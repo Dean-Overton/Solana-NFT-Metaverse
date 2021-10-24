@@ -13,7 +13,19 @@ public class Player : MonoBehaviour
 
     private List<Collider2D> pickupableDrops = new List<Collider2D>();
 
+    [System.Serializable]
+    public struct EquippedObject {
+        public AttributeType type;
+        public EquipmentItemObject equipementItem;
+    }
+    public EquippedObject[] defaultEquipped;
     public Dictionary<AttributeType, EquipmentItemObject> equipped = new Dictionary<AttributeType, EquipmentItemObject>();
+
+    private void Start() {
+        foreach(EquippedObject equipement in defaultEquipped) {
+            equipped.Add(equipement.type, equipement.equipementItem);
+        }
+    }
 
     private void Update()
     {
@@ -50,22 +62,39 @@ public class Player : MonoBehaviour
         }
     }
     public void EquipItem (EquipmentItemObject item) {
+        GameObject itemObj = GameObject.Find(item.equipementObject.name);
+        if (itemObj.activeSelf) {
+            Debug.Log("Item already equipped!");
+            return;
+        }
         switch (item.equipementBodyPart)  
             {  
             case AttributeType.Body:  
                 //Statement  
-            break;  
-            case AttributeType.LeftHand:  
-                SpriteRenderer spriteRend = GameObject.Find("LHandSprite").GetComponent<SpriteRenderer>();
-                spriteRend.sprite = item.equippedSprite;
-            break;  
+                break;  
+            case AttributeType.LeftHand:
+                EquipLeftHand(item, itemObj);
+                break;  
             case AttributeType.RightHand:  
                 //Statement  
-            break;  
+                break;  
             default:  
                 //Does not have an equippable body type
-            break;  
+                break;  
             }  
+    }
+    public void EquipLeftHand (EquipmentItemObject itemToEquip, GameObject obj) {
+        GameObject equipementItem = obj;
+        EquipmentItemObject equippedHand;
+        equipped.TryGetValue(AttributeType.LeftHand, out equippedHand);
+        GameObject currentHand = GameObject.Find(equippedHand.name);
+        currentHand.SetActive(false);
+        if (!equipementItem)
+            equipementItem = Instantiate(itemToEquip.equipementObject, currentHand.transform.parent);
+        else
+            equipementItem.SetActive(true);
+        
+        GetComponent<SortingScript>().sRS.Insert(0, equipementItem.GetComponent<SpriteRenderer>());
     }
     private void OnDrawGizmosSelected()
     {
