@@ -13,75 +13,59 @@ public class Player : MonoBehaviour
 
     private List<Collider2D> pickupableDrops = new List<Collider2D>();
 
+    public Dictionary<AttributeType, EquipmentItemObject> equipped = new Dictionary<AttributeType, EquipmentItemObject>();
+
     private void Update()
     {
-        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, itemReachableDistance, itemDropMask);
+        Collider2D[] cols = Physics2D.OverlapCircleAll(handPos.position, itemReachableDistance, itemDropMask);
         List<Collider2D> currentPickUpDrops = cols.Cast<Collider2D>().ToList();
         foreach (Collider2D col in pickupableDrops) {
-            if (!currentPickUpDrops.Contains(col))
-                if (col != null)
-                    col.gameObject.GetComponent<ItemPickupTrigger>().ItemPickTip(false);
+            if (!currentPickUpDrops.Contains(col)) {
+                col.gameObject.GetComponent<Tag>().HideTag();
+            } else {
+                col.gameObject.GetComponent<ItemDrop>().ShowPickUpTag(); 
+            }
         }
         pickupableDrops = currentPickUpDrops;
-        foreach (Collider2D col in pickupableDrops) {
-            col.gameObject.GetComponent<ItemPickupTrigger>().ItemPickTip(true); }
-#if UNITY_EDITOR
-        if (Input.GetMouseButtonDown(0))
+
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
+            foreach (Collider2D col in pickupableDrops) {
+                //PICKUP
+                ItemObject item = col.gameObject.GetComponent<ItemDrop>().item;
+                if (item)
+                    playerInventory.AddItem(item, 1);
 
-            RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-            if (hit.collider != null) //Did we hit something?
-            {
-                if (hit.collider.tag == "Item Drop") //Is it an item we can pickup?
-                {
-                    if (Vector2.Distance(hit.transform.position, transform.position) <= itemReachableDistance) //Can we reach it?
-                    {
-                        //PICKUP
-                        ItemObject item = hit.transform.gameObject.GetComponent<ItemPickupTrigger>().item;
-                        if (item)
-                            playerInventory.AddItem(item, 1);
-
-                        GameEvents.current.PickUpItem(item);
-
-                        //**PICKUP ANIMATION**
-
-                        pickupableDrops.Remove(hit.collider);
-                        Destroy(hit.collider.gameObject);
-                    }
+                if (item.type == ItemType.Equipment){
+                    EquipItem(item as EquipmentItemObject);
                 }
+
+                //GameEvents.current.PickUpItem(item);
+
+                //**PICKUP ANIMATION**
+
+                pickupableDrops.Remove(col);
+                col.gameObject.GetComponent<ItemDrop>().PickUp();
             }
         }
-#else
-            if (Input.touchCount > 0 && (Input.GetTouch(0).phase == TouchPhase.Began))
-            {
-                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-                Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
-
-                RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-                if (hit.collider != null) //Did we hit something?
-                {
-                    if (hit.collider.tag == "Item Drop") //Is it an item we can pickup?
-                    {
-                        if (Vector2.Distance(hit.transform.position, transform.position) <= itemReachableDistance) //Can we reach it?
-                        {
-                            //PICKUP
-                        ItemObject item = hit.transform.gameObject.GetComponent<ItemPickupTrigger>().item;
-                        if (item)
-                            playerInventory.AddItem(item, 1);
-
-                        GameEvents.current.PickUpItem(item);
-
-                        //**PICKUP ANIMATION**
-
-                        pickupableDrops.Remove(hit.collider);
-                        Destroy(hit.collider.gameObject);
-                        }
-                    }
-                }
-            }
-#endif
+    }
+    public void EquipItem (EquipmentItemObject item) {
+        switch (item.equipementBodyPart)  
+            {  
+            case AttributeType.Body:  
+                //Statement  
+            break;  
+            case AttributeType.LeftHand:  
+                SpriteRenderer spriteRend = GameObject.Find("LHandSprite").GetComponent<SpriteRenderer>();
+                spriteRend.sprite = item.equippedSprite;
+            break;  
+            case AttributeType.RightHand:  
+                //Statement  
+            break;  
+            default:  
+                //Does not have an equippable body type
+            break;  
+            }  
     }
     private void OnDrawGizmosSelected()
     {

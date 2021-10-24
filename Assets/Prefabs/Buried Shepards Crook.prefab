@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1294206565166312714}
   - component: {fileID: 1294206565166312715}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ParticleGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1294206565345859661}
   - component: {fileID: 1294206565345859658}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BuriedShepardsCrookShadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1294206565444325628}
   - component: {fileID: 1294206565444325629}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ParticleRingShadowBehind
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ Transform:
   m_LocalScale: {x: 0.606495, y: -0.3032475, z: 0.606495}
   m_Children: []
   m_Father: {fileID: 1294206566404084365}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1294206565444325629
 SpriteRenderer:
@@ -259,7 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1294206565669232214}
   - component: {fileID: 1294206565669232215}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ParticleRingShadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ Transform:
   m_LocalScale: {x: 0.606495, y: 0.3032475, z: 0.606495}
   m_Children: []
   m_Father: {fileID: 1294206566404084365}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1294206565669232215
 SpriteRenderer:
@@ -342,7 +342,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1294206565731410984}
   - component: {fileID: 1294206565731410987}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BuriedShepardsCrook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +425,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1294206566345919413}
   - component: {fileID: 1294206566345919412}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ParticleRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -508,7 +508,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1294206566352672663}
   - component: {fileID: 1294206566352672660}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GroundParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,7 +527,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1294206566404084365}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1294206566352672660
 SpriteRenderer:
@@ -592,10 +592,11 @@ GameObject:
   - component: {fileID: 1294206566404084365}
   - component: {fileID: 1294206566404084362}
   - component: {fileID: 6813442161662401322}
+  - component: {fileID: 3511454876433261371}
   - component: {fileID: 1294206566404084363}
   - component: {fileID: 1294206566404084364}
   - component: {fileID: 1294206566404084367}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Buried Shepards Crook
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -618,9 +619,9 @@ Transform:
   - {fileID: 1294206565166312714}
   - {fileID: 1294206565731410984}
   - {fileID: 1294206565345859661}
-  - {fileID: 1294206566352672663}
   - {fileID: 1294206565444325628}
   - {fileID: 1294206565669232214}
+  - {fileID: 1294206566352672663}
   - {fileID: 7212636120782050494}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -638,8 +639,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 86dd71ea10631744c88333f8340053bd, type: 2}
+  destroyOnPickup: []
   pickupable: 0
   duration: -1
+  stateOfAnimation: 
 --- !u!114 &6813442161662401322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -652,6 +655,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a625e06ea676c4bafd1c359f92b519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3511454876433261371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294206566404084366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d122b671e36249d4799f3721c1de590f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagText: {fileID: 270322914402369747}
 --- !u!95 &1294206566404084363
 Animator:
   serializedVersion: 3
@@ -715,7 +731,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1294206566625770500}
   - component: {fileID: 1294206566625770503}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ParticleRingBehind
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -799,7 +815,7 @@ GameObject:
   - component: {fileID: 6907598368156004342}
   - component: {fileID: 4450368591793365560}
   - component: {fileID: 270322914402369747}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: ItemTag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -879,7 +895,7 @@ GameObject:
   - component: {fileID: 3540373825706840164}
   - component: {fileID: 4221411375373675727}
   - component: {fileID: 1843853523835852708}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
