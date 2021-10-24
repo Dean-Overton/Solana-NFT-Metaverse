@@ -7,8 +7,20 @@ public class EquipmentItemObject : ItemObject
 {
     public float atkBonus;
     public float defenceBonus;
+
+    public Sprite equippedSprite;
+    public AttributeType equipementBodyPart;
     public void Awake()
     {
         type = ItemType.Equipment;
     }
+}
+public enum AttributeType {
+    Head,
+    Body,
+    LeftHand,
+    RightHand,
+    Necklace,
+    Hair,
+    Eyes
 }

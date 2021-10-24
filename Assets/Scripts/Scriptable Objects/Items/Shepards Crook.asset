@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f842d8d9064f34a942db864be0a99e, type: 3}
   m_Name: Shepards Crook
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 0}
+  itemDropPrefab: {fileID: 1294206566404084366, guid: fb8f2fada73d0744c85dd8147232ad15, type: 3}
   type: 1
   stackable: 0
   description: The one and only shepards crook in the SOLANA metaverse. This unlocks
@@ -20,3 +20,5 @@ MonoBehaviour:
     yourself!
   atkBonus: 10
   defenceBonus: 0
+  equippedSprite: {fileID: 21300000, guid: 8262b25919362014eb9a5bdbb090cad9, type: 3}
+  equipementBodyPart: 2
