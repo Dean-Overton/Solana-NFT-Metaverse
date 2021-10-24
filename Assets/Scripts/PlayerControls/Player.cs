@@ -13,20 +13,18 @@ public class Player : MonoBehaviour
 
     private List<Collider2D> pickupableDrops = new List<Collider2D>();
 
-    [System.Serializable]
-    public struct EquippedObject {
-        public AttributeType type;
-        public EquipmentItemObject equipementItem;
-    }
-    public EquippedObject[] defaultEquipped;
     public Dictionary<AttributeType, EquipmentItemObject> equipped = new Dictionary<AttributeType, EquipmentItemObject>();
 
     private void Start() {
-        foreach(EquippedObject equipement in defaultEquipped) {
-            equipped.Add(equipement.type, equipement.equipementItem);
+        if(playerInventory.Container.Count > 0) {
+            foreach(InventorySlot slot in playerInventory.Container) {
+                if (slot.item.type == ItemType.Equipment) {
+                    AddEquipement(slot.item as EquipmentItemObject);
+                    if 
+                }
+            }
         }
     }
-
     private void Update()
     {
         Collider2D[] cols = Physics2D.OverlapCircleAll(handPos.position, itemReachableDistance, itemDropMask);
@@ -61,19 +59,36 @@ public class Player : MonoBehaviour
             }
         }
     }
+    public void AddEquipement (EquipmentItemObject item) {
+        string itemBodyTypeString = "";
+        switch (item.equipementBodyPart)  
+        {  
+            case AttributeType.Body:
+                itemBodyTypeString = "Body";
+                break;  
+            case AttributeType.LeftHand:
+                itemBodyTypeString = "Left Hand";
+                break;  
+            case AttributeType.RightHand:  
+                itemBodyTypeString = "Right Hand"; 
+                break;
+        }
+        Instantiate(item.equipementObject, GameObject.Find(itemBodyTypeString).transform); 
+    }
     public void EquipItem (EquipmentItemObject item) {
         GameObject itemObj = GameObject.Find(item.equipementObject.name);
         if (itemObj.activeSelf) {
             Debug.Log("Item already equipped!");
             return;
         }
+        if (item.)
         switch (item.equipementBodyPart)  
-            {  
+        {  
             case AttributeType.Body:  
                 //Statement  
                 break;  
             case AttributeType.LeftHand:
-                EquipLeftHand(item, itemObj);
+                EnableLeftHand(itemObj);
                 break;  
             case AttributeType.RightHand:  
                 //Statement  
@@ -81,27 +96,17 @@ public class Player : MonoBehaviour
             default:  
                 //Does not have an equippable body type
                 break;  
-            }  
+        }  
     }
-    public void EquipLeftHand (EquipmentItemObject itemToEquip, GameObject obj) {
-        GameObject equipementItem = obj;
-        EquipmentItemObject equippedHand;
-        equipped.TryGetValue(AttributeType.LeftHand, out equippedHand);
-        GameObject currentHand = GameObject.Find(equippedHand.name);
-        currentHand.SetActive(false);
-        if (!equipementItem)
-            equipementItem = Instantiate(itemToEquip.equipementObject, currentHand.transform.parent);
-        else
-            equipementItem.SetActive(true);
-        
-        GetComponent<SortingScript>().sRS.Insert(0, equipementItem.GetComponent<SpriteRenderer>());
+    public void EnableLeftHand (GameObject obj) {
+        EquipmentItemObject currentHand;
+        if (equipped.TryGetValue(AttributeType.LeftHand, out currentHand)) {
+            GameObject.Find(currentHand.name).SetActive(false);
+            obj.SetActive(true);
+        }
     }
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(handPos.position, itemReachableDistance);
-    }
-    private void OnApplicationQuit()
-    {
-        playerInventory.Container.Clear();
     }
 }
