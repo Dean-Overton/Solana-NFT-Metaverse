@@ -16,17 +16,32 @@ public class ItemDrop: MonoBehaviour
     [SerializeField]
     private float duration = -1f;
     //public string stateOfAnimation;
+
+    float timeLeft = 0;
+    private void Update() {
+        if(duration != -1f) {
+            if (timeLeft == 0)
+                timeLeft = duration;
+            else if (duration > 0) 
+                timeLeft -= Time.deltaTime;
+            else
+                DestroyObjects();
+        }
+    }
     public void PickUp() {
         pickupable = false;
-        foreach (GameObject obj in destroyOnPickup) {
-            Destroy(obj);
-        }
+        DestroyObjects();
         GetComponent<Collider2D>().enabled = false;
     }
     public void ShowPickUpTag () {
         if (pickupable) {
             GetComponent<Tag>().ChangeTag("Pickup (P)");
             GetComponent<Tag>().ShowTag();
+        }
+    }
+    public void DestroyObjects () {
+        foreach (GameObject obj in destroyOnPickup) {
+            Destroy(obj);
         }
     }
 }
