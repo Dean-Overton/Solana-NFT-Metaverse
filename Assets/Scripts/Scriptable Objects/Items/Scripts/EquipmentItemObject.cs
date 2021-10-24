@@ -8,7 +8,7 @@ public class EquipmentItemObject : ItemObject
     public float atkBonus;
     public float defenceBonus;
 
-    public Sprite equippedSprite;
+    public GameObject equipementObject;
     public AttributeType equipementBodyPart;
     public void Awake()
     {
