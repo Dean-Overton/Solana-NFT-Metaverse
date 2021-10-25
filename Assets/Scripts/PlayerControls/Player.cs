@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
             foreach(InventorySlot slot in playerInventory.Container) {
                 if (slot.item.type == ItemType.Equipment) {
                     AddEquipement(slot.item as EquipmentItemObject);
-                    if 
+                    //if 
                 }
             }
         }
@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
             Debug.Log("Item already equipped!");
             return;
         }
-        if (item.)
+        //if (item.)
         switch (item.equipementBodyPart)  
         {  
             case AttributeType.Body:  
