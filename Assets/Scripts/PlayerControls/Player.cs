@@ -92,11 +92,6 @@ public class Player : MonoBehaviour
             Debug.Log("No");
             return;
         }
-        // if (itemObj.activeSelf) {
-        //     Debug.Log("Item already equipped!");
-        //     return;
-        // }
-        //if (item.)
         switch (item.equipementBodyPart)  
         {  
             case AttributeType.Body:  
