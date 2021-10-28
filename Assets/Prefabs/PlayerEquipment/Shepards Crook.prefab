@@ -96,3 +96,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 263d3f11b4931d943886b2de15c4ff0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blackholePrefab: {fileID: 3864941521652347858, guid: 3ebad0ad44b643448983d68e16b6d5ec, type: 3}
