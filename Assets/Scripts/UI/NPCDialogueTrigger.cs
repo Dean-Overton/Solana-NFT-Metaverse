@@ -18,9 +18,6 @@ public class NPCDialogueTrigger : MonoBehaviour
 
     [SerializeField] private Vector3 cameraOffset;
 
-    [SerializeField] private SpriteRenderer sR;
-
-
     private DialogueManager dialogueMan;
 
     private Transform player;
@@ -120,9 +117,9 @@ public class NPCDialogueTrigger : MonoBehaviour
         //TODO: Start NPC talking nonsense animation and sound
 
         if (FindObjectOfType<GameManager>().player.transform.position.x < transform.position.x) //Ensuring npc is facing the player when talking
-            sR.flipX = true;
+            transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
         else
-            sR.flipX = false;
+            transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
 
 		dialogueMan.StartDialogue(dialogue);
 	}
