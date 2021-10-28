@@ -70,8 +70,8 @@ public class DialogueManager : MonoBehaviour
 	{
 		isCurrentlyInDialogue = false;
 		GameEvents.current.DialogueEnd();
-		Camera.main.GetComponent<CameraFollow>().target = GameObject.FindGameObjectWithTag("Player").transform;
-		Camera.main.GetComponent<CameraFollow>().offset = new Vector3(0, 1.5f, 0);
+		//Camera.main.GetComponent<CameraFollow>().target = GameObject.FindGameObjectWithTag("Player").transform;
+		//Camera.main.GetComponent<CameraFollow>().offset = new Vector3(0, 1.5f, 0);
 		animator.SetTrigger("DialogueEnd");
 	}
 

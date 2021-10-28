@@ -125,8 +125,8 @@ public class NPCDialogueTrigger : MonoBehaviour
 	}
     public void OnDialogueBegin ()
     {
-        Camera.main.GetComponent<CameraFollow>().target = transform;
-        Camera.main.GetComponent<CameraFollow>().offset = cameraOffset;
+        //Camera.main.GetComponent<CameraFollow>().target = transform;
+        //Camera.main.GetComponent<CameraFollow>().offset = cameraOffset;
     }
     private void OnDrawGizmosSelected()
     {
