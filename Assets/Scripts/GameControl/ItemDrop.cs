@@ -30,6 +30,7 @@ public class ItemDrop: MonoBehaviour
     }
     public void PickUp() {
         pickupable = false;
+        GameEvents.current.PickUpItem(item);
         DestroyObjects();
         GetComponent<Collider2D>().enabled = false;
     }

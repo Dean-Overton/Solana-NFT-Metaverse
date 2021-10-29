@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float healthPoints = 100f;
-    public float itemReachableDistance;
+    [SerializeField] private float playerHealth = 100f;
+    [SerializeField] private GameObject bloodPrefab;
+
+    [Header("Item Drops")]
+    public float reachableDistance;
     [SerializeField] private Transform handPos;
     public LayerMask itemDropMask;
 
@@ -21,14 +24,19 @@ public class Player : MonoBehaviour
             foreach(InventorySlot slot in playerInventory.Container) {
                 if (slot.item.type == ItemType.Equipment) {
                     AddEquipement(slot.item as EquipmentItemObject);
-                    //if 
+                
+                    EquipItem(slot.item as EquipmentItemObject);
                 }
             }
         }
+        GameEvents.current.onDialogueEnd += DialogueEndFunction;
+    }
+    private void DialogueEndFunction () {
+        Debug.Log("Dialogue end");
     }
     private void Update()
     {
-        Collider2D[] cols = Physics2D.OverlapCircleAll(handPos.position, itemReachableDistance, itemDropMask);
+        Collider2D[] cols = Physics2D.OverlapCircleAll(handPos.position, reachableDistance, itemDropMask);
         List<Collider2D> currentPickUpDrops = cols.Cast<Collider2D>().ToList();
         foreach (Collider2D col in pickupableDrops) {
             if (!currentPickUpDrops.Contains(col)) {
@@ -48,6 +56,8 @@ public class Player : MonoBehaviour
                     playerInventory.AddItem(item, 1);
 
                 if (item.type == ItemType.Equipment){
+                    AddEquipement(item as EquipmentItemObject);
+
                     EquipItem(item as EquipmentItemObject);
                 }
 
@@ -59,6 +69,12 @@ public class Player : MonoBehaviour
                 col.gameObject.GetComponent<ItemDrop>().PickUp();
             }
         }
+        if (playerHealth <= 0)
+            Die();
+    }
+    public void Die () {
+        Instantiate(bloodPrefab, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
     public void AddEquipement (EquipmentItemObject item) {
         string itemBodyTypeString = "";
@@ -69,20 +85,27 @@ public class Player : MonoBehaviour
                 break;  
             case AttributeType.LeftHand:
                 itemBodyTypeString = "Left Hand";
+                Transform parent = GameObject.Find("Left Hand").transform;
+                foreach(Transform child in parent) {
+                    Debug.Log(child.name);
+                    Destroy(child.gameObject);
+                }
                 break;  
             case AttributeType.RightHand:  
                 itemBodyTypeString = "Right Hand"; 
                 break;
         }
-        Instantiate(item.equipementObject, GameObject.Find(itemBodyTypeString).transform); 
+        GameObject addedEquipment = Instantiate(item.equipementObject, GameObject.Find(itemBodyTypeString).transform); 
+        //addedEquipment.SetActive(false);
+        addedEquipment.gameObject.name = item.name;
+        GetComponent<SortingScript>().sRS.Insert(0, addedEquipment.GetComponent<SpriteRenderer>());
     }
     public void EquipItem (EquipmentItemObject item) {
-        GameObject itemObj = GameObject.Find(item.equipementObject.name);
-        if (itemObj.activeSelf) {
-            Debug.Log("Item already equipped!");
+        GameObject itemObj = GameObject.Find(item.name);
+        if (!itemObj) {
+            Debug.Log("No");
             return;
         }
-        //if (item.)
         switch (item.equipementBodyPart)  
         {  
             case AttributeType.Body:  
@@ -99,15 +122,15 @@ public class Player : MonoBehaviour
                 break;  
         }  
     }
-    public void EnableLeftHand (GameObject obj) {
-        EquipmentItemObject currentHand;
-        if (equipped.TryGetValue(AttributeType.LeftHand, out currentHand)) {
-            GameObject.Find(currentHand.name).SetActive(false);
-            obj.SetActive(true);
+    public void EnableLeftHand (GameObject obj) {   
+        Transform parent = GameObject.Find("Left Hand").transform;
+        foreach (Transform child in parent) {
+            //child.gameObject.SetActive(false);
         }
+        obj.SetActive(true);
     }
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(handPos.position, itemReachableDistance);
+        Gizmos.DrawWireSphere(handPos.position, reachableDistance);
     }
 }

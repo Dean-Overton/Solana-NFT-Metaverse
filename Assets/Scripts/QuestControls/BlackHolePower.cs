@@ -1,18 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class BlackHolePower : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject blackholePrefab;
 
-    // Update is called once per frame
-    void Update()
+    private void Update() {
+        if (Input.GetMouseButtonDown(0)) {
+            transform.parent.parent.GetComponent<Animator>().SetTrigger("CastSpell");
+            StartCoroutine("SpawnBlackHole");
+        }
+    }
+    public IEnumerator SpawnBlackHole()
     {
-        
+        Vector3 worldPoint = Input.mousePosition;
+        worldPoint.z = Mathf.Abs(Camera.main.transform.position.z);
+        //worldPoint.z = 11f;
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(worldPoint);
+        mouseWorldPosition.z = 0f;
+        yield return new WaitForSeconds(0.5f);
+        GameObject hole = Instantiate(blackholePrefab, mouseWorldPosition, Quaternion.identity);
+        hole.GetComponent<Blackhole>().playerSpawned = true;
     }
 }
