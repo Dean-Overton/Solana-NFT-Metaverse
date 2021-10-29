@@ -419,6 +419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+  bloodPrefab: {fileID: 1647479432592805212, guid: d4508fd0cbed33041bdbe3f4af08ed1d, type: 3}
   playerAttackDistance: 1
   handPos: {fileID: 3996237496423644691}
 --- !u!114 &691726030980901239

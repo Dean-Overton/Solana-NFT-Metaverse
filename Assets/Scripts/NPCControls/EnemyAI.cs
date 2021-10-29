@@ -8,13 +8,15 @@ public class EnemyAI : MonoBehaviour
 {
     [Header("Enemy Properties")]
     [SerializeField] private float health = 10f;
+    [SerializeField] private GameObject bloodPrefab;
     [SerializeField] private float playerAttackDistance = 1f;
     [SerializeField] private Transform handPos;
 
     private Transform target;
     private Movement enemyMovementScript;
     private void Start() {
-        target = FindObjectOfType<Player>().transform;
+        if (FindObjectOfType<Player>())   
+            target = FindObjectOfType<Player>().transform;
     }
     private void Awake() {
         enemyMovementScript = GetComponent<Movement>();
@@ -33,10 +35,8 @@ public class EnemyAI : MonoBehaviour
             enemyMovementScript.MoveWithInput(movementDirection);
         }
     }
-    public void Attack () {
-
-    }
     public void Die () {
+        Instantiate(bloodPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
     private void OnDrawGizmosSelected()

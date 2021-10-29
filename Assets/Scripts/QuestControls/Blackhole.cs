@@ -1,11 +1,11 @@
-    using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Blackhole : MonoBehaviour
 {
     [SerializeField] private float pullRange = 5f;
     [SerializeField] private float duration = 5f;
+
+    public bool playerSpawned = false;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -40,8 +40,15 @@ public class Blackhole : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other) {
         Rigidbody2D rB = other.gameObject.GetComponent<Rigidbody2D>();
-        if (rB) //kill only rigidbodies
-            Destroy(other.gameObject);
+        if (rB) { //kill only rigidbodies
+            if (other.gameObject.GetComponent<Player>())
+                other.gameObject.GetComponent<Player>().Die();
+            if (other.gameObject.GetComponent<EnemyAI>()) {
+                if (playerSpawned && FindObjectOfType<Player>())
+                    FindObjectOfType<BlackholeQuest>().totalEnemyKills+=1;
+                other.gameObject.GetComponent<EnemyAI>().Die();
+            }
+        }
     }
     private void OnDrawGizmosSelected()
     {
