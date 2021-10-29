@@ -79,19 +79,11 @@
       "source": "builtin",
       "dependencies": {}
     },
-<<<<<<< HEAD
-    "com.unity.collab-proxy": {
-      "version": "1.13.5",
-=======
     "com.unity.cinemachine": {
       "version": "2.7.9",
->>>>>>> 2b80fa7327099c2f1cc26e3f0cf67e8d66e66d98
       "depth": 0,
       "source": "registry",
-      "dependencies": {
-        "com.unity.nuget.newtonsoft-json": "2.0.0",
-        "com.unity.services.core": "1.0.1"
-      },
+      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.collab-proxy": {
@@ -138,8 +130,6 @@
     },
     "com.unity.mathematics": {
       "version": "1.2.1",
-<<<<<<< HEAD
-=======
       "depth": 1,
       "source": "registry",
       "dependencies": {},
@@ -147,22 +137,11 @@
     },
     "com.unity.nuget.newtonsoft-json": {
       "version": "2.0.0",
->>>>>>> 2b80fa7327099c2f1cc26e3f0cf67e8d66e66d98
       "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-<<<<<<< HEAD
-    "com.unity.nuget.newtonsoft-json": {
-      "version": "2.0.0",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-=======
->>>>>>> 2b80fa7327099c2f1cc26e3f0cf67e8d66e66d98
     "com.unity.services.core": {
       "version": "1.0.1",
       "depth": 1,
