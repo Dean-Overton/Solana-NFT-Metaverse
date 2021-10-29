@@ -371,14 +371,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5834353906226789980}
-  - component: {fileID: 1356063504724998203}
+  - component: {fileID: 3337453473015796899}
+  - component: {fileID: 691726030980901239}
   - component: {fileID: 5834353906226789983}
   - component: {fileID: 5834353906226789977}
   - component: {fileID: 5834353906226789976}
   - component: {fileID: 3676231938061859382}
   m_Layer: 0
   m_Name: EnemyNPCSpear
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -405,7 +406,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1356063504724998203
+--- !u!114 &3337453473015796899
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -414,11 +415,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 5834353906226789955}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0119f6b892ae73a4e87ae8cc32c137f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 8509d5136b9604b459c5a910cafecdf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 2.5
+  health: 10
+  playerAttackDistance: 1
+  handPos: {fileID: 3996237496423644691}
+--- !u!114 &691726030980901239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834353906226789955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 770adb013ce99194687ef8b007e47f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 4
   m_MovementSmoothing: 0.05
+  m_FacingRight: 1
 --- !u!95 &5834353906226789983
 Animator:
   serializedVersion: 3
@@ -450,7 +467,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 70
+  m_Mass: 20
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -576,7 +593,7 @@ SpriteRenderer:
   m_SortingLayerID: 1541529509
   m_SortingLayer: 3
   m_SortingOrder: -2358
-  m_Sprite: {fileID: 21300000, guid: 11c671f16940c4943b1d0b7a30597649, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2454cb6d8a5f7a74b9ba966335daa31c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -660,7 +677,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: -2360
   m_Sprite: {fileID: 21300000, guid: 2fce46f9d32982c4f8689b7857fa6429, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

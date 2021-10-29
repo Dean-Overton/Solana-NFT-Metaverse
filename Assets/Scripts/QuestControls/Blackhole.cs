@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Blackhole : MonoBehaviour
 {
-    public float pullRange = 5f;
+    [SerializeField] private float pullRange = 5f;
+    [SerializeField] private float duration = 5f;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -19,6 +20,14 @@ public class Blackhole : MonoBehaviour
                     PullObject(col.gameObject, rB);
             }
         }
+    }
+    private void Update() {
+        duration -= Time.deltaTime;
+        if (duration <= 0)
+            Die();
+    }
+    private void Die () {
+        Destroy(gameObject);
     }
     public void PullObject (GameObject effectedGameObject, Rigidbody2D rB) {
         Vector2 direction = transform.position - effectedGameObject.transform.position;

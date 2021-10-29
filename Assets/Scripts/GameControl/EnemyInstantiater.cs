@@ -14,11 +14,9 @@ public class EnemyInstantiater : MonoBehaviour
     }
     private void Update() {
         if (enemieSpawnQueue.Count > 0) {
-            Debug.Log(time);
             time -= Time.deltaTime;
             if (time <= 0)
             {
-                Debug.Log("spawn");
                 SpawnEnemy(enemieSpawnQueue.Dequeue());
                 time = timeBetweenSpawns;
             }

@@ -1,14 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BlackHolePower : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject blackholePrefab;
+    [SerializeField] private GameObject blackholePrefab;
 
-    private void FixedUpdate() {
-        if (Input.GetMouseButtonUp(0)) {
+    private void Update() {
+        if (Input.GetMouseButtonDown(0)) {
             Vector3 worldPoint = Input.mousePosition;
             worldPoint.z = Mathf.Abs(Camera.main.transform.position.z);
             //worldPoint.z = 11f;

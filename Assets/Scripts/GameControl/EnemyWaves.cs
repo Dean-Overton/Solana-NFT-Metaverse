@@ -36,7 +36,6 @@ public class EnemyWaves : MonoBehaviour
                     return;
                 for (int i = 0; i < enemiesToSpawn.Count; i++) {
                     enemySpawnScript.enemieSpawnQueue.Enqueue(enemiesToSpawn[i]);
-                    Debug.Log("added");
                 }
                 spawned = true;
             }
