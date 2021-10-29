@@ -8053,7 +8053,7 @@ MonoBehaviour:
   - {fileID: 1285159296}
   - {fileID: 1168602370}
   - {fileID: 357950835}
-  timeBetweenSpawns: 3
+  timeBetweenSpawns: 1
 --- !u!1 &1883405874
 GameObject:
   m_ObjectHideFlags: 0
