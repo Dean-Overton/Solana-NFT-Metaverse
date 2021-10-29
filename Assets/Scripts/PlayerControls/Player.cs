@@ -5,7 +5,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float itemReachableDistance;
+    [SerializeField] private float playerHealth = 100f;
+    [SerializeField] private GameObject bloodPrefab;
+
+    [Header("Item Drops")]
+    public float reachableDistance;
     [SerializeField] private Transform handPos;
     public LayerMask itemDropMask;
 
@@ -32,7 +36,7 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-        Collider2D[] cols = Physics2D.OverlapCircleAll(handPos.position, itemReachableDistance, itemDropMask);
+        Collider2D[] cols = Physics2D.OverlapCircleAll(handPos.position, reachableDistance, itemDropMask);
         List<Collider2D> currentPickUpDrops = cols.Cast<Collider2D>().ToList();
         foreach (Collider2D col in pickupableDrops) {
             if (!currentPickUpDrops.Contains(col)) {
@@ -65,6 +69,12 @@ public class Player : MonoBehaviour
                 col.gameObject.GetComponent<ItemDrop>().PickUp();
             }
         }
+        if (playerHealth <= 0)
+            Die();
+    }
+    public void Die () {
+        Instantiate(bloodPrefab, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
     public void AddEquipement (EquipmentItemObject item) {
         string itemBodyTypeString = "";
@@ -121,6 +131,6 @@ public class Player : MonoBehaviour
     }
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(handPos.position, itemReachableDistance);
+        Gizmos.DrawWireSphere(handPos.position, reachableDistance);
     }
 }
