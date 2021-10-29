@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public float healthPoints = 100f;
     public float itemReachableDistance;
     [SerializeField] private Transform handPos;
     public LayerMask itemDropMask;
