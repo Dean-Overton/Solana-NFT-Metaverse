@@ -17,6 +17,7 @@ public class QuestManager : MonoBehaviour
     }
     public void QuestComplete () {
         questPanel.SetActive(true);
+        Time.timeScale = 0;
     }
     public void RestartScene () {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

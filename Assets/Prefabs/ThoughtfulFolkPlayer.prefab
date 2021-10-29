@@ -365,13 +365,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb3bf3c03cb04f5408e54ad17a33f62b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemReachableDistance: 2
+  playerHealth: 100
+  bloodPrefab: {fileID: 0}
+  reachableDistance: 0
   handPos: {fileID: 6424035441566203048}
   itemDropMask:
     serializedVersion: 2
     m_Bits: 64
   playerInventory: {fileID: 11400000, guid: 13437dc17ceaf694b935ce86e7573ddb, type: 2}
-  defaultEquipped: []
 --- !u!114 &2521781517107027112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,8 +385,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0119f6b892ae73a4e87ae8cc32c137f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 3
+  movementSpeed: 3
   m_MovementSmoothing: 0.05
+  m_FacingRight: 1
 --- !u!95 &6978705339864652492
 Animator:
   serializedVersion: 3
@@ -417,7 +419,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 20
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
