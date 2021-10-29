@@ -365,13 +365,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb3bf3c03cb04f5408e54ad17a33f62b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthPoints: 100
   itemReachableDistance: 2
   handPos: {fileID: 6424035441566203048}
   itemDropMask:
     serializedVersion: 2
     m_Bits: 64
   playerInventory: {fileID: 11400000, guid: 13437dc17ceaf694b935ce86e7573ddb, type: 2}
-  defaultEquipped: []
 --- !u!114 &2521781517107027112
 MonoBehaviour:
   m_ObjectHideFlags: 0
