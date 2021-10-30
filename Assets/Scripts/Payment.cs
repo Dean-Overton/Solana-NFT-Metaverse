@@ -8,10 +8,7 @@ public class Payment : MonoBehaviour
     [DllImport("__Internal")] private static extern void PromptForPayment ();
     [DllImport("__Internal")] private static extern void CheckForFolkOwnership ();
 
-    private bool _folkOwnership = false;
-    public bool folkOwnership {
-        get { return _folkOwnership; }
-    }
+    public bool _folkOwnership = false;
     public event Action onProvenFolkOwnership;
     public void FolkOwnership () //Called when react returns they are an owner
     {
@@ -21,17 +18,28 @@ public class Payment : MonoBehaviour
     }
     private bool hasPaid = false;
     public event Action onPaymentSuccessful;
+    
+    private void Awake()
+    {
+        current = this;
+    }
     public void PaymentSuccessful () //Called when react returns they have payed
     {
-        this.hasPaid = true;
         if (onPaymentSuccessful != null)
             onPaymentSuccessful();
+        hasPaid = true;
+        Debug.Log ("payment success");
     }
     private void Start() {
+#if UNITY_WEBGL
         CheckForFolkOwnership();
+#endif
     }
     public void PromptPay() {
         //Trigger website payment
-        PromptForPayment();
+        //PromptForPayment();
+
+
+        PaymentSuccessful();
     }
 }

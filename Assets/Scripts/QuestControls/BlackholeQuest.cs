@@ -6,23 +6,26 @@ public class BlackholeQuest : MonoBehaviour
 {  
     public int totalEnemyKills = 0;
     public GameObject payPanel;
+    private bool hasPaidOrOwned = false;
     private void Update() {
-        if (!Payment.current.folkOwnership) {
-            if (totalEnemyKills >= 20) {
-                payPanel.SetActive(true);
-                Time.timeScale = 0;
+        if (!Payment.current._folkOwnership) {
+            if (!hasPaidOrOwned) {
+                if (totalEnemyKills >= 20) {
+                    payPanel.SetActive(true);
+                    Time.timeScale = 0;
+                }
             }
-        } else {
-            if (totalEnemyKills >= 100) {
-                GetComponent<QuestManager>().QuestComplete();
-            }
+        }
+        if (totalEnemyKills >= 30) {
+            GetComponent<QuestManager>().QuestComplete();
         }
     }
     public void PayToKeepPlaying () {
-        Payment.current.PromptPay();
         Payment.current.onPaymentSuccessful += HasPayedForPlaying;
+        Payment.current.PromptPay();
     }
     public void HasPayedForPlaying () {
+        hasPaidOrOwned = true;
         payPanel.SetActive(false);
         Time.timeScale = 1;
     }

@@ -1,11 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private float playerHealth = 100f;
+    [SerializeField] private Slider healthBar;
     [SerializeField] private GameObject bloodPrefab;
 
     [Header("Item Drops")]
@@ -69,8 +70,11 @@ public class Player : MonoBehaviour
                 col.gameObject.GetComponent<ItemDrop>().PickUp();
             }
         }
-        if (playerHealth <= 0)
-            Die();
+        if (playerHealth < 100) {
+            healthBar.gameObject.SetActive(true);
+            if (playerHealth <= 0)
+                Die();
+        }
     }
     public void Die () {
         Instantiate(bloodPrefab, transform.position, Quaternion.identity);
@@ -128,6 +132,10 @@ public class Player : MonoBehaviour
             //child.gameObject.SetActive(false);
         }
         obj.SetActive(true);
+    }
+    public void DamagePlayer (int damageAmount) {
+        playerHealth -= damageAmount;
+        healthBar.value = (int)playerHealth/100f;
     }
     private void OnDrawGizmosSelected()
     {
