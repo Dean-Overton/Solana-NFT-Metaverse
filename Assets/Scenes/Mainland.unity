@@ -3714,7 +3714,6 @@ GameObject:
   m_Component:
   - component: {fileID: 888073328}
   - component: {fileID: 888073327}
-  - component: {fileID: 888073329}
   - component: {fileID: 888073330}
   m_Layer: 0
   m_Name: GameManager
@@ -3749,19 +3748,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &888073329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 888073326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7d91b872f659394a80fc7db64ce7343, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  totalEnemyKills: 0
 --- !u!114 &888073330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3774,6 +3760,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6be69451b97d8743b003e288c5556b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  questPanel: {fileID: 0}
+  deathPanel: {fileID: 0}
+  player: {fileID: 0}
 --- !u!4 &907187261 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6745024685333971697, guid: 5f8b9086dfd5141408aab406e2480f8d, type: 3}
@@ -7772,7 +7761,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7767221, y: 1}
+    m_SensorSize: {x: 1.7772278, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
