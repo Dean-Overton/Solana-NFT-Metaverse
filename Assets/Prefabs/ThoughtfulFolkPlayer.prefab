@@ -368,6 +368,7 @@ MonoBehaviour:
   playerHealth: 100
   bloodPrefab: {fileID: 0}
   reachableDistance: 0
+  healthPoints: 100
   handPos: {fileID: 6424035441566203048}
   itemDropMask:
     serializedVersion: 2

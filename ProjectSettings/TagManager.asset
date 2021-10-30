@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Item
   - Enemy
+  - Meatworks
   layers:
   - Default
   - TransparentFX
