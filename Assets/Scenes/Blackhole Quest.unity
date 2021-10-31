@@ -2163,7 +2163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8814990299459925141, guid: 0b50970025a7f754ba32b7b60087228b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8814990299459925142, guid: 0b50970025a7f754ba32b7b60087228b, type: 3}
       propertyPath: m_RootOrder
@@ -7573,7 +7573,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.777512, y: 1}
+    m_SensorSize: {x: 1.7789731, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -7967,14 +7967,30 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 888073329}
+    - target: {fileID: 2746631996317376238, guid: 88bc36b9381aadd47ab18efdd8ef78c0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2746631996394896789, guid: 88bc36b9381aadd47ab18efdd8ef78c0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 888073330}
+    - target: {fileID: 2746631996439799690, guid: 88bc36b9381aadd47ab18efdd8ef78c0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746631996731360818, guid: 88bc36b9381aadd47ab18efdd8ef78c0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2746631996911804337, guid: 88bc36b9381aadd47ab18efdd8ef78c0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 888073330}
+    - target: {fileID: 2746631997056109532, guid: 88bc36b9381aadd47ab18efdd8ef78c0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2746631997426368576, guid: 88bc36b9381aadd47ab18efdd8ef78c0, type: 3}
       propertyPath: m_Name
       value: UIManager
@@ -8071,6 +8087,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 888073330}
+    - target: {fileID: 2746631997607015757, guid: 88bc36b9381aadd47ab18efdd8ef78c0, type: 3}
+      propertyPath: m_Text
+      value: You don't own a Thoughtful Folk :(
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746631998094401155, guid: 88bc36b9381aadd47ab18efdd8ef78c0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88bc36b9381aadd47ab18efdd8ef78c0, type: 3}
 --- !u!4 &2773003229377909860 stripped
