@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     [SerializeField] private Slider healthBar;
     [SerializeField] private GameObject bloodPrefab;
 
-
     public LayerMask interactableMask;
     public float interactableDistance;
     private List<Collider2D> interactable = new List<Collider2D>();
@@ -22,9 +21,8 @@ public class Player : MonoBehaviour
     public Dictionary<AttributeType, EquipmentItemObject> equipped = new Dictionary<AttributeType, EquipmentItemObject>();
 
     private void Start() {
-        #if !UNITY_EDITOR && UNITY_WEBGL
+        #if UNITY_WEBGL == true && UNITY_EDITOR == false
             WebGLInput.captureAllKeyboardInput = false;
-            Debug.Log(WebGLInput.captureAllKeyboardInput);
         #endif
         if(playerInventory.Container.Count > 0) {
             foreach(InventorySlot slot in playerInventory.Container) {
