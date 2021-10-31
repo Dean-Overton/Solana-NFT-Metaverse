@@ -3204,8 +3204,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7d91b872f659394a80fc7db64ce7343, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalEnemyKills: 19
-  buriedShepardsCrook: {fileID: 0}
+  totalEnemyKills: 0
+  buriedShepardsCrook: {fileID: 1294206566571486159}
   payPanel: {fileID: 832654350}
 --- !u!114 &888073330
 MonoBehaviour:
@@ -7763,6 +7763,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb8f2fada73d0744c85dd8147232ad15, type: 3}
+--- !u!1 &1294206566571486159 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1294206566404084366, guid: fb8f2fada73d0744c85dd8147232ad15, type: 3}
+  m_PrefabInstance: {fileID: 1294206566571486158}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1433941980800138382
 PrefabInstance:
   m_ObjectHideFlags: 0

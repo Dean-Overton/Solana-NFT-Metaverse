@@ -3390,8 +3390,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6be69451b97d8743b003e288c5556b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questPanel: {fileID: 0}
-  deathPanel: {fileID: 0}
+  questPanel: {fileID: 1489358681}
+  deathPanel: {fileID: 1600854935}
   player: {fileID: 0}
 --- !u!4 &907187261 stripped
 Transform:
@@ -5746,6 +5746,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f8b9086dfd5141408aab406e2480f8d, type: 3}
+--- !u!1 &1489358681 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2746631998094401155, guid: 88bc36b9381aadd47ab18efdd8ef78c0, type: 3}
+  m_PrefabInstance: {fileID: 617747251}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1496042722 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6745024685333971697, guid: 5f8b9086dfd5141408aab406e2480f8d, type: 3}
@@ -5983,6 +5988,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f8b9086dfd5141408aab406e2480f8d, type: 3}
+--- !u!1 &1600854935 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2746631997056109532, guid: 88bc36b9381aadd47ab18efdd8ef78c0, type: 3}
+  m_PrefabInstance: {fileID: 617747251}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1623972410
 PrefabInstance:
   m_ObjectHideFlags: 0
