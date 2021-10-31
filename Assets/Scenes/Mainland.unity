@@ -2346,6 +2346,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2746631996394896789, guid: 88bc36b9381aadd47ab18efdd8ef78c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 888073330}
+    - target: {fileID: 2746631996394896789, guid: 88bc36b9381aadd47ab18efdd8ef78c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartScene
+      objectReference: {fileID: 0}
     - target: {fileID: 2746631997426368576, guid: 88bc36b9381aadd47ab18efdd8ef78c0, type: 3}
       propertyPath: m_Name
       value: UIManager
@@ -7653,7 +7661,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.777512, y: 1}
+    m_SensorSize: {x: 1.9921976, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

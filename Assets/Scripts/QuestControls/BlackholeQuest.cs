@@ -23,12 +23,12 @@ public class BlackholeQuest : MonoBehaviour
     }
     public void PayToKeepPlaying () {
         Payment.current.onPaymentSuccessful += HasPayedForPlaying;
-        //Payment.current.PromptPay();
-        HasPayedForPlaying();
+        Payment.current.PromptPay();
     }
     public void HasPayedForPlaying () {
         hasPaidOrOwned = true;
         payPanel.SetActive(false);
         Time.timeScale = 1;
+        FindObjectOfType<BlackHolePower>().canCast = true;
     }
 }
