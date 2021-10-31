@@ -16,11 +16,11 @@ public class GameEvents : MonoBehaviour
         if (onDialogueStart != null)
             onDialogueStart();
     }
-    public event Action onDialogueEnd;
-    public void DialogueEnd()
+    public event Action<string> onDialogueEnd; //Requires string parameter to easily find who was talking
+    public void DialogueEnd(string nameOfNPC)
     {
         if (onDialogueEnd != null)
-            onDialogueEnd();
+            onDialogueEnd(nameOfNPC);
     }
 
     //Questing

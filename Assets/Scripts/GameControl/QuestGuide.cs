@@ -12,11 +12,14 @@ public class QuestGuide : MonoBehaviour
             GameEvents.current.onDialogueEnd += TransitionToQuestScene;
         }
     }
-    private void TransitionToQuestScene () {
+    private void TransitionToQuestScene (string nameOfNPC) {
+        if (nameOfNPC != gameObject.name)
+            return;
         if (nameOfQuestScene == "" || nameOfQuestScene == null) {
             Debug.LogError("No scene for guide to redirect to!");
             return;
         }
+        Debug.Log(nameOfQuestScene);
         FindObjectOfType<SceneLoader>().LoadSceneByName(nameOfQuestScene);
     }
 }

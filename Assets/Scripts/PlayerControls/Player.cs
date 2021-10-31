@@ -33,8 +33,8 @@ public class Player : MonoBehaviour
         }
         GameEvents.current.onDialogueEnd += DialogueEndFunction;
     }
-    private void DialogueEndFunction () {
-        Debug.Log("Dialogue end");
+    private void DialogueEndFunction (string nameOfNPC) {
+        Debug.Log("Dialogue ended with " + nameOfNPC);
     }
     private void Update()
     {

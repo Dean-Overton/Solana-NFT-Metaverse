@@ -69,7 +69,7 @@ public class HintManager : MonoBehaviour
 	void EndDialogue()
 	{
 		isCurrentlyInDialogue = false;
-		GameEvents.current.DialogueEnd();
+		//GameEvents.current.DialogueEnd();
 		//Camera.main.GetComponent<CameraFollow>().target = GameObject.FindGameObjectWithTag("Player").transform;
 		//Camera.main.GetComponent<CameraFollow>().offset = new Vector3(0, 1.5f, 0);
 		animator.SetTrigger("DialogueEnd");

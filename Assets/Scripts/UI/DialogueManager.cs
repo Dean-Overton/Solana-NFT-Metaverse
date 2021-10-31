@@ -23,12 +23,14 @@ public class DialogueManager : MonoBehaviour
 			if (Input.GetKeyDown(KeyCode.Space))
 				DisplayNextSentence();
 	}
-	public void StartDialogue(Dialogue dialogue)
+	public void StartDialogue(Dialogue dialogue, string gameObjectName)
 	{
 		if (sentences.Count > 0) //Should not start new dialogue if there is already sentences in queue
 			return;
 
 		isCurrentlyInDialogue = true;
+
+		currentTalking = gameObjectName;
 
 		GameEvents.current.DialogueStart();
 
@@ -69,11 +71,11 @@ public class DialogueManager : MonoBehaviour
 			yield return 0;
 		}
 	}
-
+	string currentTalking;
 	void EndDialogue()
 	{
 		isCurrentlyInDialogue = false;
-		GameEvents.current.DialogueEnd();
+		GameEvents.current.DialogueEnd(currentTalking);
 		//Camera.main.GetComponent<CameraFollow>().target = GameObject.FindGameObjectWithTag("Player").transform;
 		//Camera.main.GetComponent<CameraFollow>().offset = new Vector3(0, 1.5f, 0);
 		animator.SetTrigger("DialogueEnd");

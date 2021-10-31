@@ -29,7 +29,8 @@ public class NPCDialogueTrigger : MonoBehaviour
     public void TriggerStartDialogue()
 	{
         //TODO: **Start NPC talking nonsense animation and sound**
-		dialogueMan.StartDialogue(dialogue);
+		dialogueMan.StartDialogue(dialogue, gameObject.name);
+
 	}
     public void OnDialogueBegin ()
     {

@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1541529509
   m_SortingLayer: 3
-  m_SortingOrder: -2445
+  m_SortingOrder: -5240
   m_Sprite: {fileID: 21300000, guid: 24374fec5c0734548a7302edb1bfcc18, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -154,7 +154,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1541529509
   m_SortingLayer: 3
-  m_SortingOrder: -2442
+  m_SortingOrder: -5237
   m_Sprite: {fileID: 21300000, guid: feb982a5b28ec084a86e54ff29add1aa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -237,7 +237,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1541529509
   m_SortingLayer: 3
-  m_SortingOrder: -2444
+  m_SortingOrder: -5239
   m_Sprite: {fileID: 21300000, guid: a1a812d6c9104b144864af24000302dd, type: 3}
   m_Color: {r: 0.5943396, g: 0.3371236, b: 0.13120325, a: 1}
   m_FlipX: 0
@@ -320,7 +320,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1541529509
   m_SortingLayer: 3
-  m_SortingOrder: -2443
+  m_SortingOrder: -5238
   m_Sprite: {fileID: 21300000, guid: a731eeed87be92646873db4780538bc2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -403,7 +403,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1541529509
   m_SortingLayer: 3
-  m_SortingOrder: -2448
+  m_SortingOrder: -5243
   m_Sprite: {fileID: 21300000, guid: 24374fec5c0734548a7302edb1bfcc18, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -507,6 +507,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7629069652515649938}
+  - component: {fileID: 5820243424742044407}
   - component: {fileID: 5468823694908915111}
   - component: {fileID: 420374825798965}
   - component: {fileID: 2517566886583473988}
@@ -541,6 +542,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5820243424742044407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8131937027465110722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb3bf3c03cb04f5408e54ad17a33f62b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 100
+  healthBar: {fileID: 0}
+  bloodPrefab: {fileID: 0}
+  interactableMask:
+    serializedVersion: 2
+    m_Bits: 0
+  interactableDistance: 0
+  handPos: {fileID: 0}
+  pickUpsMask:
+    serializedVersion: 2
+    m_Bits: 0
+  playerInventory: {fileID: 0}
 --- !u!95 &5468823694908915111
 Animator:
   serializedVersion: 3
@@ -713,7 +738,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1541529509
   m_SortingLayer: 3
-  m_SortingOrder: -2446
+  m_SortingOrder: -5241
   m_Sprite: {fileID: 21300000, guid: 24374fec5c0734548a7302edb1bfcc18, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -796,7 +821,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1541529509
   m_SortingLayer: 3
-  m_SortingOrder: -2447
+  m_SortingOrder: -5242
   m_Sprite: {fileID: 21300000, guid: 24374fec5c0734548a7302edb1bfcc18, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

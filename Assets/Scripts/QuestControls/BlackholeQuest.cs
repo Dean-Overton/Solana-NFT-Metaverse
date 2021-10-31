@@ -17,13 +17,14 @@ public class BlackholeQuest : MonoBehaviour
                 }
             }
         }
-        if (totalEnemyKills >= 30) {
+        if (totalEnemyKills >= 100) {
             GetComponent<QuestManager>().QuestComplete();
         }
     }
     public void PayToKeepPlaying () {
         Payment.current.onPaymentSuccessful += HasPayedForPlaying;
-        Payment.current.PromptPay();
+        //Payment.current.PromptPay();
+        HasPayedForPlaying();
     }
     public void HasPayedForPlaying () {
         hasPaidOrOwned = true;

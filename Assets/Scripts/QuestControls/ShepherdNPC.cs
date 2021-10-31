@@ -28,6 +28,10 @@ public class ShepherdNPC : MonoBehaviour
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
 		playerAnim = GetComponent<Animator>();
     }
+	private void Start() {
+		GameEvents.current.onDialogueStart += DialogueStart;
+		GameEvents.current.onDialogueEnd += DialogueEnd;
+	}
 	void FixedUpdate()
     {
 		// Instantiate(gameObject, )
@@ -77,13 +81,25 @@ public class ShepherdNPC : MonoBehaviour
 			{
 				Flip();
 			}
-		}
+	}
+	public void DialogueStart () {
+		contactedByPlayer = true;
+	}
+	public void DialogueEnd (string nameOfNPC) {
+		if (nameOfNPC != gameObject.name)
+            return;
+		FindObjectOfType<QuestManager>().QuestComplete();
+	}
 	// If the player should jump...
 	private void Flip()
 	{
 		m_FacingRight = !m_FacingRight;
 
 		transform.localScale = new Vector3(transform.localScale.x * -1f, transform.localScale.y, transform.localScale.z);
+		Tag tagScript;
+		if (TryGetComponent<Tag>(out tagScript)) { //Because the player is flipping we need to ensure the text is still right way round
+			tagScript.tagText.transform.localScale = new Vector3(tagScript.tagText.transform.localScale.x * -1f, tagScript.tagText.transform.localScale.y, tagScript.tagText.transform.localScale.z);
+		}
 	}
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
@@ -91,14 +107,6 @@ public class ShepherdNPC : MonoBehaviour
 		{
 			collidingTerrain = true;
 		}
-
-		Rigidbody2D rB = collision.gameObject.GetComponent<Rigidbody2D>();
-        if ((rB) && (collision.transform.tag == "Player")){
-			//only rigidbodies that are the player can complete mission
-             
-			Debug.Log("MISSION COMPLETED WELL DONE");
-			contactedByPlayer = true;
-		} 
 	}
 	private void OnCollisionStay2D(Collision2D collision)
 	{
