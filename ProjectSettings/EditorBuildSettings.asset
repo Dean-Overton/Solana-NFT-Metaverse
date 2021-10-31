@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Mainland.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/SheepQuest.unity
+    path: Assets/Scenes/Sheep Quest.unity
     guid: 2ca28d25541a8704aab38f925f99fdd9
   - enabled: 1
     path: Assets/Scenes/Blackhole Quest.unity
