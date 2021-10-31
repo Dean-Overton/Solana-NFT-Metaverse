@@ -5,6 +5,7 @@ using UnityEngine;
 public class BlackholeQuest : MonoBehaviour
 {  
     public int totalEnemyKills = 0;
+    public GameObject buriedShepardsCrook;
     public GameObject payPanel;
     private bool hasPaidOrOwned = false;
     private void Update() {

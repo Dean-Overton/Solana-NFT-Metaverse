@@ -13,6 +13,10 @@ public class QuestGuide : MonoBehaviour
         }
     }
     private void TransitionToQuestScene () {
-
+        if (nameOfQuestScene == "" || nameOfQuestScene == null) {
+            Debug.LogError("No scene for guide to redirect to!");
+            return;
+        }
+        FindObjectOfType<SceneLoader>().LoadSceneByName(nameOfQuestScene);
     }
 }

@@ -9,6 +9,7 @@ public class QuestManager : MonoBehaviour
     public GameObject player;
     private void Start() {
         player = FindObjectOfType<Player>().gameObject;
+        Time.timeScale = 1;
     }
     void Update()
     {

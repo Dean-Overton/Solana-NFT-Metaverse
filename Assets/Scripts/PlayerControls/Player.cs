@@ -9,13 +9,14 @@ public class Player : MonoBehaviour
     [SerializeField] private Slider healthBar;
     [SerializeField] private GameObject bloodPrefab;
 
+
+    public LayerMask interactableMask;
+    public float interactableDistance;
+    private List<Collider2D> interactable = new List<Collider2D>();
     [Header("Item Drops")]
-    public float reachableDistance;
     [SerializeField] private Transform handPos;
-    public LayerMask itemDropMask;
-
+    [SerializeField] private LayerMask pickUpsMask;
     public InventoryObject playerInventory;
-
     private List<Collider2D> pickupableDrops = new List<Collider2D>();
 
     public Dictionary<AttributeType, EquipmentItemObject> equipped = new Dictionary<AttributeType, EquipmentItemObject>();
@@ -37,7 +38,21 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-        Collider2D[] cols = Physics2D.OverlapCircleAll(handPos.position, reachableDistance, itemDropMask);
+        ShowAndHidePickupTags();
+        ShowAndHideDialogueTags();
+        if (Input.GetKeyDown(KeyCode.P))
+            PickUpReachableDrops();
+        if (Input.GetKeyDown(KeyCode.T))
+            TalkToInteractable();
+
+        if (playerHealth < 100) {
+            healthBar.gameObject.SetActive(true);
+            if (playerHealth <= 0)
+                Die();
+        }
+    }
+    public void ShowAndHidePickupTags () {
+        Collider2D[] cols = Physics2D.OverlapCircleAll(handPos.position, interactableDistance, pickUpsMask);
         List<Collider2D> currentPickUpDrops = cols.Cast<Collider2D>().ToList();
         foreach (Collider2D col in pickupableDrops) {
             if (!currentPickUpDrops.Contains(col)) {
@@ -47,33 +62,45 @@ public class Player : MonoBehaviour
             }
         }
         pickupableDrops = currentPickUpDrops;
+    }
+    private void PickUpReachableDrops() {
+        foreach (Collider2D col in pickupableDrops) {
+            //PICKUP
+            ItemObject item = col.gameObject.GetComponent<ItemDrop>().item;
+            if (item)
+                playerInventory.AddItem(item, 1);
 
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            foreach (Collider2D col in pickupableDrops) {
-                //PICKUP
-                ItemObject item = col.gameObject.GetComponent<ItemDrop>().item;
-                if (item)
-                    playerInventory.AddItem(item, 1);
+            if (item.type == ItemType.Equipment){
+                AddEquipement(item as EquipmentItemObject);
 
-                if (item.type == ItemType.Equipment){
-                    AddEquipement(item as EquipmentItemObject);
+                EquipItem(item as EquipmentItemObject);
+            }
 
-                    EquipItem(item as EquipmentItemObject);
-                }
+            //GameEvents.current.PickUpItem(item);
 
-                //GameEvents.current.PickUpItem(item);
+            //**PICKUP ANIMATION**
 
-                //**PICKUP ANIMATION**
-
-                pickupableDrops.Remove(col);
-                col.gameObject.GetComponent<ItemDrop>().PickUp();
+            pickupableDrops.Remove(col);
+            col.gameObject.GetComponent<ItemDrop>().PickUp();
+        }
+    }
+    public void ShowAndHideDialogueTags () {
+        Collider2D[] cols = Physics2D.OverlapCircleAll(handPos.position, interactableDistance, interactableMask);
+        List<Collider2D> currentInteractable = cols.Cast<Collider2D>().ToList();
+        foreach (Collider2D col in interactable) {
+            if (!currentInteractable.Contains(col)) {
+                col.gameObject.GetComponent<Tag>().ChangeTagTempBack();
+            } else {
+                col.gameObject.GetComponent<NPCDialogueTrigger>().TriggerTipTag();
             }
         }
-        if (playerHealth < 100) {
-            healthBar.gameObject.SetActive(true);
-            if (playerHealth <= 0)
-                Die();
+        interactable = currentInteractable;
+    }
+    private void TalkToInteractable () {
+        Collider2D col = interactable[0]; //Originally to stop from multiple dialogues starting. May need improvement to allow player to interact multiple close NPCs
+        NPCDialogueTrigger nPCDialogueScript;
+        if (col.gameObject.TryGetComponent<NPCDialogueTrigger>(out nPCDialogueScript)) {
+            nPCDialogueScript.TriggerStartDialogue();
         }
     }
     public void Die () {
@@ -139,6 +166,6 @@ public class Player : MonoBehaviour
     }
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(handPos.position, reachableDistance);
+        Gizmos.DrawWireSphere(handPos.position, interactableDistance);
     }
 }

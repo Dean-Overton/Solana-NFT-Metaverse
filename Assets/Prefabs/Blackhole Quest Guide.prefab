@@ -184,7 +184,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1541529509
   m_SortingLayer: 3
-  m_SortingOrder: -574
+  m_SortingOrder: -2214
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -213,7 +213,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3319502495499814940
 RectTransform:
   m_ObjectHideFlags: 0
@@ -223,14 +223,14 @@ RectTransform:
   m_GameObject: {fileID: 3261651803637871607}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.016962947, y: 0.016962947, z: 0.016962947}
+  m_LocalScale: {x: 0.012921017, y: 0.012921017, z: 0.012921017}
   m_Children: []
   m_Father: {fileID: 3531681984126812112}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00000029802, y: 2.84}
+  m_AnchoredPosition: {x: 0.11, y: 1.73}
   m_SizeDelta: {x: 416.1883, y: 150.6111}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1369393946661297750
@@ -262,7 +262,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 117c5e68c87016e46af12ee2a8edcd13, type: 3}
+    m_Font: {fileID: 12800000, guid: 901c1c6e3bdcc0a4ea12538977e68e94, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -274,7 +274,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ...
+  m_Text: Sive The Wise
 --- !u!1 &4223914910957373944
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,6 +317,7 @@ GameObject:
   - component: {fileID: 682544025699899175}
   - component: {fileID: 4247921372837948203}
   - component: {fileID: 3102258695800202056}
+  - component: {fileID: 4952156712177265825}
   - component: {fileID: 4247921372837948212}
   - component: {fileID: 4247921372837948210}
   - component: {fileID: 4247921372837948211}
@@ -363,6 +364,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d745757a7f25e54997455fca85b758c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameOfQuestScene: Blackhole Quest
+  triggerQuestOnDialogueEnd: 1
 --- !u!114 &4247921372837948203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,6 +405,19 @@ MonoBehaviour:
   useColliderTrigger: 0
   onClickTrigger: 0
   cameraOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &4952156712177265825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4247921372837948200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d122b671e36249d4799f3721c1de590f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagText: {fileID: 2560487152629664762}
 --- !u!95 &4247921372837948212
 Animator:
   serializedVersion: 3
@@ -434,7 +450,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 20
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -558,7 +574,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1541529509
   m_SortingLayer: 3
-  m_SortingOrder: -573
+  m_SortingOrder: -2213
   m_Sprite: {fileID: 21300000, guid: c269cc3bbdc4f48499104c2b4898b264, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -641,7 +657,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1541529509
   m_SortingLayer: 3
-  m_SortingOrder: -575
+  m_SortingOrder: -2215
   m_Sprite: {fileID: 21300000, guid: d6b627ea0d3df524d801afae38e0b535, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -689,8 +705,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.07, y: -0.28}
-  m_SizeDelta: {x: 19.7048, y: 16.0593}
+  m_AnchoredPosition: {x: 0.21, y: -0.03}
+  m_SizeDelta: {x: 26.2074, y: 17.0641}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2692056963409135452
 Canvas:
@@ -824,7 +840,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1541529509
   m_SortingLayer: 3
-  m_SortingOrder: -571
+  m_SortingOrder: -2211
   m_Sprite: {fileID: 21300000, guid: 9bfff6d6b2eb2ac448faab09967a22e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -907,7 +923,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1541529509
   m_SortingLayer: 3
-  m_SortingOrder: -572
+  m_SortingOrder: -2212
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

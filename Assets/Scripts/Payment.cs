@@ -32,7 +32,7 @@ public class Payment : MonoBehaviour
     }
     private void Start() {
 #if UNITY_WEBGL
-        CheckForFolkOwnership();
+        //CheckForFolkOwnership();
 #endif
     }
     public void PromptPay() {

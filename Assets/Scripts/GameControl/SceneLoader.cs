@@ -9,7 +9,10 @@ public class SceneLoader : MonoBehaviour
     [Tooltip("Used to wait this amount of time till actually trying to load scene.")]
     [SerializeField] private float swipeTransitioWaitTime;
 
-    IEnumerator LoadSceneByName (string name) {
+    public void LoadSceneByName (string name) {
+        StartCoroutine(LoadSceneByNameC(name));
+    }
+    private IEnumerator LoadSceneByNameC (string name) {
         swipeTransitionAnim.SetTrigger("Start");
 
         yield return new WaitForSeconds (swipeTransitioWaitTime);

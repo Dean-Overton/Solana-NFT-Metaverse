@@ -18,7 +18,11 @@ public class DialogueManager : MonoBehaviour
 	{
 		sentences = new Queue<string>();
 	}
-
+	private void Update() {
+		if (isCurrentlyInDialogue)
+			if (Input.GetKeyDown(KeyCode.Space))
+				DisplayNextSentence();
+	}
 	public void StartDialogue(Dialogue dialogue)
 	{
 		if (sentences.Count > 0) //Should not start new dialogue if there is already sentences in queue
@@ -57,12 +61,12 @@ public class DialogueManager : MonoBehaviour
 
 	IEnumerator TypeSentence(string sentence)
 	{
-		string sentenceToType = string.Concat(sentence + "\n" + "Tap to continue.");
+		string sentenceToType = string.Concat(sentence + "\n" + "(Spacebar) to continue...");
 		dialogueText.text = "";
 		foreach (char letter in sentenceToType.ToCharArray())
 		{
 			dialogueText.text += letter;
-			yield return null;
+			yield return 0;
 		}
 	}
 
