@@ -22,6 +22,10 @@ public class Player : MonoBehaviour
     public Dictionary<AttributeType, EquipmentItemObject> equipped = new Dictionary<AttributeType, EquipmentItemObject>();
 
     private void Start() {
+        #if !UNITY_EDITOR && UNITY_WEBGL
+            WebGLInput.captureAllKeyboardInput = false;
+            Debug.Log(WebGLInput.captureAllKeyboardInput);
+        #endif
         if(playerInventory.Container.Count > 0) {
             foreach(InventorySlot slot in playerInventory.Container) {
                 if (slot.item.type == ItemType.Equipment) {
