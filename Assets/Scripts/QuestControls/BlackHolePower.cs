@@ -4,7 +4,7 @@ using System.Collections;
 public class BlackHolePower : MonoBehaviour
 {
     [SerializeField] private GameObject blackholePrefab;
-    [SerializeField] private float timeBetweenCast = 3f;
+    [SerializeField] private float timeBetweenCast = 1f;
     public bool canCast = true;
 
     float time;
@@ -13,6 +13,9 @@ public class BlackHolePower : MonoBehaviour
     }
     private void Update() {
         time -= Time.deltaTime;
+        if (Time.timeScale == 0) {
+            canCast = false;
+        }
         if (time <= 0 && canCast) {
             if (Input.GetMouseButtonDown(0)) {
                 transform.parent.parent.GetComponent<Animator>().SetTrigger("CastSpell");

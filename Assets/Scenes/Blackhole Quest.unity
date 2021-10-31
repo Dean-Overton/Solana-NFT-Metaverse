@@ -7896,9 +7896,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2746631996157496308, guid: 88bc36b9381aadd47ab18efdd8ef78c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746631996157496308, guid: 88bc36b9381aadd47ab18efdd8ef78c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746631996157496308, guid: 88bc36b9381aadd47ab18efdd8ef78c0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 888073329}
+    - target: {fileID: 2746631996157496308, guid: 88bc36b9381aadd47ab18efdd8ef78c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2746631996157496308, guid: 88bc36b9381aadd47ab18efdd8ef78c0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: BlackholeQuest, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2746631996317376232, guid: 88bc36b9381aadd47ab18efdd8ef78c0, type: 3}
       propertyPath: m_Sprite
       value: 

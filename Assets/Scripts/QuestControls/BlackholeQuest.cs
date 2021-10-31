@@ -30,5 +30,6 @@ public class BlackholeQuest : MonoBehaviour
         hasPaidOrOwned = true;
         payPanel.SetActive(false);
         Time.timeScale = 1;
+        FindObjectOfType<BlackHolePower>().canCast = true;
     }
 }
