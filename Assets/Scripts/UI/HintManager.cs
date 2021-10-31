@@ -5,74 +5,48 @@ using UnityEngine.UI;
 
 public class HintManager : MonoBehaviour
 {
-	public Text nameText;
-	public Text dialogueText;
+	public Text importantHint;
+	public Text unImportantHint;
+	public float timeBetweenHints = 5f;
 
 	public Animator animator;
 
-	public bool isCurrentlyInDialogue;
-
-	private Queue<string> sentences;
+	private Queue<Hint> hintsQueue;
 
 	void Start()
 	{
-		sentences = new Queue<string>();
+		hintsQueue = new Queue<Hint>();
 	}
-
-	public void StartDialogue(Dialogue dialogue)
+	private void Update() {
+		if (hintsQueue.Count > 0) //Should not start new dialogue if there is already sentences in queue
+			DequeueAndShowHint();
+	}
+	public void AddHint(string hintText, bool important)
 	{
-		if (sentences.Count > 0) //Should not start new dialogue if there is already sentences in queue
-			return;
-
-		isCurrentlyInDialogue = true;
-
-		GameEvents.current.DialogueStart();
-
-		nameText.text = dialogue.name;
-
-		sentences.Clear();
-
-		foreach (string sentence in dialogue.sentences)
-		{
-			sentences.Enqueue(sentence);
+		Hint newHint = new Hint();
+		newHint.text = hintText;
+		newHint.important = important;
+		hintsQueue.Enqueue(newHint);
+	}
+	public void DequeueAndShowHint()
+	{
+		Hint hintToShow = hintsQueue.Dequeue();
+		StartCoroutine(ShowHint(hintToShow));
+	}
+	IEnumerator ShowHint (Hint hintToShow) {
+		animator.SetTrigger("FadeOut");
+		if (hintToShow.important) {
+			importantHint.text = hintToShow.text;
+			animator.SetTrigger("ImportantHint");
+		} else {
+			unImportantHint.text = hintToShow.text;
+			animator.SetTrigger("UnImportantHint");
 		}
-		dialogueText.transform.parent.gameObject.SetActive(true);
-		animator.SetTrigger("DialogueStart");
-
-		DisplayNextSentence();
+		yield return new WaitForSeconds(timeBetweenHints);
 	}
-
-	public void DisplayNextSentence()
-	{
-		if (sentences.Count == 0)
-		{
-			EndDialogue();
-			return;
-		}
-
-		string sentence = sentences.Dequeue();
-		StopAllCoroutines();
-		StartCoroutine(TypeSentence(sentence));
-	}
-
-	IEnumerator TypeSentence(string sentence)
-	{
-		string sentenceToType = string.Concat(sentence + "\n" + "Tap to continue.");
-		dialogueText.text = "";
-		foreach (char letter in sentenceToType.ToCharArray())
-		{
-			dialogueText.text += letter;
-			yield return null;
-		}
-	}
-
-	void EndDialogue()
-	{
-		isCurrentlyInDialogue = false;
-		//GameEvents.current.DialogueEnd();
-		//Camera.main.GetComponent<CameraFollow>().target = GameObject.FindGameObjectWithTag("Player").transform;
-		//Camera.main.GetComponent<CameraFollow>().offset = new Vector3(0, 1.5f, 0);
-		animator.SetTrigger("DialogueEnd");
-	}
-
 }
+public class Hint{
+	public string text;
+	public bool important;
+}
+

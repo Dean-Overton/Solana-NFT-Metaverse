@@ -15,6 +15,8 @@ public class SpecialisedItemPickup : MonoBehaviour
     public void PickUp (ItemObject item) {
         if (item == this.item) {
             enemySpawner.SetActive(true);
+            FindObjectOfType<HintManager>().AddHint("Click on the ground to spawn a black hole. Be careful!", false);
         }
+
     }
 }
