@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4891506684286223513}
   - component: {fileID: 4891506684286223514}
+  - component: {fileID: 8690409687055066483}
   m_Layer: 0
   m_Name: GrassyGroundTopEdge
   m_TagString: Untagged
@@ -83,3 +84,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!68 &8690409687055066483
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4891506684286223515}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -13.509234, y: 0}
+  - {x: -11.602567, y: 0.18436432}
+  - {x: -9.974594, y: -0.012619019}
+  - {x: -8.1610985, y: -0.19535065}
+  - {x: -7.270006, y: 0.0922699}
+  - {x: -5.7028675, y: -0.16282654}
+  - {x: -3.859631, y: 0.19391632}
+  - {x: -1.4315275, y: -0.27332306}
+  - {x: -0.017799258, y: 0.000045776367}
+  - {x: 1.2721218, y: -0.21504974}
+  - {x: 3.9459436, y: 0.40172577}
+  - {x: 4.6212215, y: 0.18139648}
+  - {x: 7.1983128, y: 0.14439392}
+  - {x: 7.81616, y: -0.09538269}
+  - {x: 8.624682, y: -0.060913086}
+  - {x: 11.625535, y: 0.10152435}
+  - {x: 13.509234, y: -0.061454773}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
