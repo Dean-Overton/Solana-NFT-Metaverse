@@ -5650,6 +5650,15 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 3102258695800202056, guid: 007804db143ba8e4c899a54f3ed4a04a, type: 3}
+      propertyPath: dialogue.sentences.Array.data[1]
+      value: Maybe you would like to find my lost shepherds crook...
+      objectReference: {fileID: 0}
+    - target: {fileID: 3102258695800202056, guid: 007804db143ba8e4c899a54f3ed4a04a, type: 3}
+      propertyPath: dialogue.sentences.Array.data[2]
+      value: Beware though! There are many crazy peeps trying to stop me from getting
+        it back.
+      objectReference: {fileID: 0}
     - target: {fileID: 3261651803637871607, guid: 007804db143ba8e4c899a54f3ed4a04a, type: 3}
       propertyPath: m_Layer
       value: 7
