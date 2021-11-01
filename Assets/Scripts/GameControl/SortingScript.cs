@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 [ExecuteAlways]
@@ -15,9 +16,16 @@ public class SortingScript : MonoBehaviour
     }
     void Update()
     {
-        foreach (SpriteRenderer sR in sRS)
+        if (sRS.Count == 0)
+            return;
+        for (int i = 0; i < sRS.Count; i++)
         {
-            sR.sortingOrder = (int)((transform.position.y + offsetY) * -100f);
+            if (!sRS[i]) {
+                sRS.RemoveAt(i);
+                continue;
+            }
+            SpriteRenderer sR = sRS[i];
+            sR.sortingOrder = (int)((transform.position.y + offsetY) * -100f + sRS.IndexOf(sR));
         }
     }
 

@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 6357ef434a532794882136133edceb98
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - TRUMANS
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: a28ce32c4c55ba14eb3724c7ffcf6d56, type: 3}
+  - {fileID: 12800000, guid: 117c5e68c87016e46af12ee2a8edcd13, type: 3}
+  - {fileID: 12800000, guid: 503877ad7ad30e34280d225987fe9c9e, type: 3}
+  - {fileID: 12800000, guid: 901c1c6e3bdcc0a4ea12538977e68e94, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

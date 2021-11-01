@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         GameEvents.current.onDialogueStart += OnDialogueStart;
-        GameEvents.current.onDialogueEnd += OnDialogueEnd;
+        //GameEvents.current.onDialogueEnd += OnDialogueEnd;
     }
 
     void OnDialogueStart ()

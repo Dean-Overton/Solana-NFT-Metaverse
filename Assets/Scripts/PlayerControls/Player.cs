@@ -1,94 +1,173 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public float itemReachableDistance;
+    [SerializeField] private float playerHealth = 100f;
+    [SerializeField] private Slider healthBar;
+    [SerializeField] private GameObject bloodPrefab;
+
+    public LayerMask interactableMask;
+    public float interactableDistance;
+    private List<Collider2D> interactable = new List<Collider2D>();
+    [Header("Item Drops")]
     [SerializeField] private Transform handPos;
-    public LayerMask itemDropMask;
-
+    [SerializeField] private LayerMask pickUpsMask;
     public InventoryObject playerInventory;
-
     private List<Collider2D> pickupableDrops = new List<Collider2D>();
 
+    public Dictionary<AttributeType, EquipmentItemObject> equipped = new Dictionary<AttributeType, EquipmentItemObject>();
+
+    private void Start() {
+        #if UNITY_WEBGL == true && UNITY_EDITOR == false
+            WebGLInput.captureAllKeyboardInput = false;
+        #endif
+        if(playerInventory.Container.Count > 0) {
+            foreach(InventorySlot slot in playerInventory.Container) {
+                if (slot.item.type == ItemType.Equipment) {
+                    AddEquipement(slot.item as EquipmentItemObject);
+                
+                    EquipItem(slot.item as EquipmentItemObject);
+                }
+            }
+        }
+        GameEvents.current.onDialogueEnd += DialogueEndFunction;
+    }
+    private void DialogueEndFunction (string nameOfNPC) {
+        Debug.Log("Dialogue ended with " + nameOfNPC);
+    }
     private void Update()
     {
-        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, itemReachableDistance, itemDropMask);
+        ShowAndHidePickupTags();
+        ShowAndHideDialogueTags();
+        if (Input.GetKeyDown(KeyCode.P))
+            PickUpReachableDrops();
+        if (Input.GetKeyDown(KeyCode.T))
+            TalkToInteractable();
+
+        if (playerHealth < 100) {
+            healthBar.gameObject.SetActive(true);
+            if (playerHealth <= 0)
+                Die();
+        }
+    }
+    public void ShowAndHidePickupTags () {
+        Collider2D[] cols = Physics2D.OverlapCircleAll(handPos.position, interactableDistance, pickUpsMask);
         List<Collider2D> currentPickUpDrops = cols.Cast<Collider2D>().ToList();
         foreach (Collider2D col in pickupableDrops) {
-            if (!currentPickUpDrops.Contains(col))
-                if (col != null)
-                    col.gameObject.GetComponent<ItemPickupTrigger>().ItemPickTip(false);
+            if (!currentPickUpDrops.Contains(col)) {
+                col.gameObject.GetComponent<Tag>().HideTag();
+            } else {
+                col.gameObject.GetComponent<ItemDrop>().ShowPickUpTag(); 
+            }
         }
         pickupableDrops = currentPickUpDrops;
+    }
+    private void PickUpReachableDrops() {
         foreach (Collider2D col in pickupableDrops) {
-            col.gameObject.GetComponent<ItemPickupTrigger>().ItemPickTip(true); }
-#if UNITY_EDITOR
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
+            //PICKUP
+            ItemObject item = col.gameObject.GetComponent<ItemDrop>().item;
+            if (item)
+                playerInventory.AddItem(item, 1);
 
-            RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-            if (hit.collider != null) //Did we hit something?
-            {
-                if (hit.collider.tag == "Item Drop") //Is it an item we can pickup?
-                {
-                    if (Vector2.Distance(hit.transform.position, transform.position) <= itemReachableDistance) //Can we reach it?
-                    {
-                        //PICKUP
-                        ItemObject item = hit.transform.gameObject.GetComponent<ItemPickupTrigger>().item;
-                        if (item)
-                            playerInventory.AddItem(item, 1);
+            if (item.type == ItemType.Equipment){
+                AddEquipement(item as EquipmentItemObject);
 
-                        GameEvents.current.PickUpItem(item);
+                EquipItem(item as EquipmentItemObject);
+            }
 
-                        //**PICKUP ANIMATION**
+            //GameEvents.current.PickUpItem(item);
 
-                        pickupableDrops.Remove(hit.collider);
-                        Destroy(hit.collider.gameObject);
-                    }
-                }
+            //**PICKUP ANIMATION**
+
+            pickupableDrops.Remove(col);
+            col.gameObject.GetComponent<ItemDrop>().PickUp();
+        }
+    }
+    public void ShowAndHideDialogueTags () {
+        Collider2D[] cols = Physics2D.OverlapCircleAll(handPos.position, interactableDistance, interactableMask);
+        List<Collider2D> currentInteractable = cols.Cast<Collider2D>().ToList();
+        foreach (Collider2D col in interactable) {
+            if (!currentInteractable.Contains(col)) {
+                col.gameObject.GetComponent<Tag>().ChangeTagTempBack();
+            } else {
+                col.gameObject.GetComponent<NPCDialogueTrigger>().TriggerTipTag();
             }
         }
-#else
-            if (Input.touchCount > 0 && (Input.GetTouch(0).phase == TouchPhase.Began))
-            {
-                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-                Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
-
-                RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-                if (hit.collider != null) //Did we hit something?
-                {
-                    if (hit.collider.tag == "Item Drop") //Is it an item we can pickup?
-                    {
-                        if (Vector2.Distance(hit.transform.position, transform.position) <= itemReachableDistance) //Can we reach it?
-                        {
-                            //PICKUP
-                        ItemObject item = hit.transform.gameObject.GetComponent<ItemPickupTrigger>().item;
-                        if (item)
-                            playerInventory.AddItem(item, 1);
-
-                        GameEvents.current.PickUpItem(item);
-
-                        //**PICKUP ANIMATION**
-
-                        pickupableDrops.Remove(hit.collider);
-                        Destroy(hit.collider.gameObject);
-                        }
-                    }
+        interactable = currentInteractable;
+    }
+    private void TalkToInteractable () {
+        Collider2D col = interactable[0]; //Originally to stop from multiple dialogues starting. May need improvement to allow player to interact multiple close NPCs
+        NPCDialogueTrigger nPCDialogueScript;
+        if (col.gameObject.TryGetComponent<NPCDialogueTrigger>(out nPCDialogueScript)) {
+            nPCDialogueScript.TriggerStartDialogue();
+        }
+    }
+    public void Die () {
+        Instantiate(bloodPrefab, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
+    public void AddEquipement (EquipmentItemObject item) {
+        string itemBodyTypeString = "";
+        switch (item.equipementBodyPart)  
+        {  
+            case AttributeType.Body:
+                itemBodyTypeString = "Body";
+                break;  
+            case AttributeType.LeftHand:
+                itemBodyTypeString = "Left Hand";
+                Transform parent = GameObject.Find("Left Hand").transform;
+                foreach(Transform child in parent) {
+                    Debug.Log(child.name);
+                    Destroy(child.gameObject);
                 }
-            }
-#endif
+                break;  
+            case AttributeType.RightHand:  
+                itemBodyTypeString = "Right Hand"; 
+                break;
+        }
+        GameObject addedEquipment = Instantiate(item.equipementObject, GameObject.Find(itemBodyTypeString).transform); 
+        //addedEquipment.SetActive(false);
+        addedEquipment.gameObject.name = item.name;
+        GetComponent<SortingScript>().sRS.Insert(0, addedEquipment.GetComponent<SpriteRenderer>());
+    }
+    public void EquipItem (EquipmentItemObject item) {
+        GameObject itemObj = GameObject.Find(item.name);
+        if (!itemObj) {
+            Debug.Log("No");
+            return;
+        }
+        switch (item.equipementBodyPart)  
+        {  
+            case AttributeType.Body:  
+                //Statement  
+                break;  
+            case AttributeType.LeftHand:
+                EnableLeftHand(itemObj);
+                break;  
+            case AttributeType.RightHand:  
+                //Statement  
+                break;  
+            default:  
+                //Does not have an equippable body type
+                break;  
+        }  
+    }
+    public void EnableLeftHand (GameObject obj) {   
+        Transform parent = GameObject.Find("Left Hand").transform;
+        foreach (Transform child in parent) {
+            //child.gameObject.SetActive(false);
+        }
+        obj.SetActive(true);
+    }
+    public void DamagePlayer (int damageAmount) {
+        playerHealth -= damageAmount;
+        healthBar.value = (int)playerHealth/100f;
     }
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(handPos.position, itemReachableDistance);
-    }
-    private void OnApplicationQuit()
-    {
-        playerInventory.Container.Clear();
+        Gizmos.DrawWireSphere(handPos.position, interactableDistance);
     }
 }
