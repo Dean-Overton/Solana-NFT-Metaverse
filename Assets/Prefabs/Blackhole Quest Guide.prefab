@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5275616969603603356}
   - component: {fileID: 7948296776399696206}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6733181439324040056}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Left Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5738687417874799041}
   - component: {fileID: 4556894148548448224}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Necklace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 3319502495499814940}
   - component: {fileID: 1369393946661297750}
   - component: {fileID: 2560487152629664762}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerTag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -284,7 +284,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 219603541794753872}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HandPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,9 +322,9 @@ GameObject:
   - component: {fileID: 4247921372837948210}
   - component: {fileID: 4247921372837948211}
   - component: {fileID: 6413395750010203997}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Blackhole Quest Guide
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -397,13 +397,8 @@ MonoBehaviour:
     name: Sive the Wise
     sentences:
     - Oh, hey there! You must be searching for something to do in this strange world.
-    - Maybe you would like find my lost shepards crook...
+    - Maybe you would like find my lost shepherds crook...
     - Beware but! There are many crazy peeps trying to stop me from getting it back.
-  playerTextLabel: {fileID: 2560487152629664762}
-  askProximityTrigger: 0
-  proximityRadius: 3
-  useColliderTrigger: 0
-  onClickTrigger: 0
   cameraOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &4952156712177265825
 MonoBehaviour:
@@ -513,7 +508,7 @@ GameObject:
   m_Component:
   - component: {fileID: 382426334653011810}
   - component: {fileID: 3649388759408785275}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -596,7 +591,7 @@ GameObject:
   m_Component:
   - component: {fileID: 751177311789905212}
   - component: {fileID: 8299765805078716292}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -681,7 +676,7 @@ GameObject:
   - component: {fileID: 2692056963409135452}
   - component: {fileID: 4490329241584133637}
   - component: {fileID: 5835166599327029432}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -779,7 +774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2336235976076420}
   - component: {fileID: 6571967027787994398}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -862,7 +857,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5238568466056078541}
   - component: {fileID: 5275461602703460753}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
