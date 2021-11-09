@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Blackhole Quest.unity
     guid: 03bf5b744ec981743a71f52ff621571a
+  - enabled: 1
+    path: Assets/Scenes/Run Quest.unity
+    guid: 1a6f366f5571aec499c86b5898dc6cf1
   m_configObjects: {}
