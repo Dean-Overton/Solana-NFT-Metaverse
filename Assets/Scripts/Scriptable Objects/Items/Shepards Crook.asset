@@ -15,10 +15,9 @@ MonoBehaviour:
   itemDropPrefab: {fileID: 1294206566404084366, guid: fb8f2fada73d0744c85dd8147232ad15, type: 3}
   type: 1
   stackable: 0
-  description: The one and only shepards crook in the SOLANA metaverse. This unlocks
-    the power of spawning  blackholes. Be careful you don't spawn one too close to
-    yourself!
-  atkBonus: 10
+  description: A shepards crook in the SOLANA metaverse. This unlocks the power of
+    spawning  blackholes. Be careful you don't spawn one too close to yourself!
+  atkBonus: 5
   defenceBonus: 0
   equipementObject: {fileID: 3173714646979803891, guid: 59b4b525709bceb49983c149ee17b54c, type: 3}
   equipementBodyPart: 2

@@ -18,13 +18,14 @@ public class Player : MonoBehaviour
     public InventoryObject playerInventory;
     private List<Collider2D> pickupableDrops = new List<Collider2D>();
 
+    public bool ovverideEquipped = false;
     public Dictionary<AttributeType, EquipmentItemObject> equipped = new Dictionary<AttributeType, EquipmentItemObject>();
 
     private void Start() {
         #if UNITY_WEBGL == true && UNITY_EDITOR == false
             WebGLInput.captureAllKeyboardInput = false;
         #endif
-        if(playerInventory.Container.Count > 0) {
+        if(!ovverideEquipped && playerInventory.Container.Count > 0) {
             foreach(InventorySlot slot in playerInventory.Container) {
                 if (slot.item.type == ItemType.Equipment) {
                     AddEquipement(slot.item as EquipmentItemObject);

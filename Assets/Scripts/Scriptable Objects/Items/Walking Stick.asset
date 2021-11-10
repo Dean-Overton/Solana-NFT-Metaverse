@@ -16,7 +16,7 @@ MonoBehaviour:
   type: 1
   stackable: 0
   description: The ol walking stick.
-  atkBonus: 2
+  atkBonus: 3
   defenceBonus: 0
   equipementObject: {fileID: 2962576949022041781, guid: 2b3924b140e2b234b80734c446c4d255, type: 3}
   equipementBodyPart: 2
