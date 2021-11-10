@@ -2719,6 +2719,10 @@ PrefabInstance:
       propertyPath: questPanel
       value: 
       objectReference: {fileID: 1382109786}
+    - target: {fileID: 1965043968707965209, guid: f53937c92d1c0124f9b2f26dcbc64e5f, type: 3}
+      propertyPath: teleportOrb
+      value: 
+      objectReference: {fileID: 11400000, guid: fd481add504dbaa4a85836afecf37c43, type: 2}
     - target: {fileID: 2375060891258817607, guid: f53937c92d1c0124f9b2f26dcbc64e5f, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -11481,23 +11485,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2aae90b0cb681d4db574c259c011bfe, type: 3}
---- !u!1 &1156698278 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6978705339864652496, guid: 411cb72bac0094244b0a7f7b32ce60a7, type: 3}
-  m_PrefabInstance: {fileID: 305775349}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1156698280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1156698278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48dcc3edefe977f44b8c72249fb20101, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1156704396 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4891506684286223515, guid: a1b18742ff5dd374e8234730843acfdd, type: 3}
