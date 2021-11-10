@@ -14,7 +14,6 @@ public class SpriteFollowMouse : MonoBehaviour
         //worldPoint.z = 11f;
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(worldPoint);
         mouseWorldPosition.z = 0f;
-        Debug.Log(mouseWorldPosition);
         transform.position = mouseWorldPosition;
     }
 }
