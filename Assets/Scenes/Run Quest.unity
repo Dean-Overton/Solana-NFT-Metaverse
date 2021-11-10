@@ -1329,7 +1329,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1541529509
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 400
   m_Sprite: {fileID: 1098286324429101383, guid: 8fdaca179819e1040b6c079a4cdfcac4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4519,7 +4519,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1541529509
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 400
   m_Sprite: {fileID: 1098286324429101383, guid: 8fdaca179819e1040b6c079a4cdfcac4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -8608,7 +8608,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8814990299459925141, guid: 0b50970025a7f754ba32b7b60087228b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8814990299459925142, guid: 0b50970025a7f754ba32b7b60087228b, type: 3}
       propertyPath: m_RootOrder
@@ -8796,7 +8796,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.777512, y: 1}
+    m_SensorSize: {x: 1.7771639, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -10508,7 +10508,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1541529509
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 400
   m_Sprite: {fileID: 1098286324429101383, guid: 8fdaca179819e1040b6c079a4cdfcac4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -11704,7 +11704,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1541529509
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 400
   m_Sprite: {fileID: 1098286324429101383, guid: 8fdaca179819e1040b6c079a4cdfcac4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -12855,7 +12855,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1541529509
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 400
   m_Sprite: {fileID: 1098286324429101383, guid: 8fdaca179819e1040b6c079a4cdfcac4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -19194,7 +19194,7 @@ GameObject:
   - component: {fileID: 1851811835}
   m_Layer: 0
   m_Name: Flames
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19227,13 +19227,13 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851811831}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -10.750626, y: 0}
+  m_Offset: {x: -11.006472, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -19244,7 +19244,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.5431519, y: 12.385033}
+  m_Size: {x: 2.0314589, y: 12.385033}
   m_EdgeRadius: 0
 --- !u!114 &1851811834
 MonoBehaviour:
@@ -26705,7 +26705,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1541529509
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 400
   m_Sprite: {fileID: 1098286324429101383, guid: 8fdaca179819e1040b6c079a4cdfcac4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
