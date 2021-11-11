@@ -20,7 +20,6 @@ public class Flames : MonoBehaviour
         GameObject[] environments = GameObject.FindGameObjectsWithTag("Environment");     
         
         foreach (GameObject environment in environments){
-            Debug.Log("Ignoring");
             if(environment.GetComponent<Collider2D>() != null){
                 Physics2D.IgnoreCollision(environment.GetComponent<Collider2D>(), GetComponent<Collider2D>());
             }
