@@ -2594,6 +2594,24 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2237776274314388606, guid: c7557f30c6b089b49a2adc5cf09edba5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c7557f30c6b089b49a2adc5cf09edba5, type: 3}
+--- !u!1 &253897452 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2375060891258817607, guid: f53937c92d1c0124f9b2f26dcbc64e5f, type: 3}
+  m_PrefabInstance: {fileID: 266889838}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &253897453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253897452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b431a8dd5cba738418166a780b507cf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportOrb: {fileID: 11400000, guid: fd481add504dbaa4a85836afecf37c43, type: 2}
 --- !u!1 &255262734 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4891506684286223515, guid: a1b18742ff5dd374e8234730843acfdd, type: 3}
@@ -2778,7 +2796,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 708508745459142426, guid: f53937c92d1c0124f9b2f26dcbc64e5f, type: 3}
   m_PrefabInstance: {fileID: 266889838}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 253897452}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6be69451b97d8743b003e288c5556b8, type: 3}
